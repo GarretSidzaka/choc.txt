@@ -38,7 +38,7 @@ REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" /v DisableBlo
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\Power" /v EfficiencyModeDisabled /t REG_DWORD /d 1 /f
 
 #DISABLE AUTOMATIC WINDOWS UPDATE
-RED ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update" /v AUOptions /t REG_DWORD /d 1 /f
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update" /v AUOptions /t REG_DWORD /d 1 /f
 sc config wuauserv start= disabled
 net stop wuauserv
 sc config bits start= disabled
