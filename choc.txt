@@ -34,6 +34,11 @@ REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" /v DisableBlo
 #DISABLE "EFFICIENCY MODE"
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\Power" /v EfficiencyModeDisabled /t REG_DWORD /d 1 /f
 
+#REMOVE COPILOT
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot"
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot" /v TurnOffWindowsCopilot /t REG_DWORD /d 1 /f
+
+
 #BLOCK 24H2:
 REG ADD HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /f /v TargetReleaseVersion /t REG_DWORD /d 1
 REG ADD HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /f /v TargetReleaseVersionInfo /t REG_SZ /d 23H2
