@@ -12,7 +12,7 @@ REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\Power" /v EfficiencyModeDisabl
 #DISABLE GALLERY
 REG DELETE "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}"
 #REMOVE RECOMMENDED IN START MENU
-REG DELETE "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v HideRecommendedSection  /t REG_DWORD /d 1 /f
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v HideRecommendedSection  /t REG_DWORD /d 1 /f
 #DISABLE SEARCH INDEXING
 sudo sc config "wsearch" start=disabled
 
