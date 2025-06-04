@@ -1,8 +1,6 @@
 #INSTALL CHOCOLATEY, MY FAVORITE BRICK
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
-#REMOVE ANNOYING STUFF:
-
 #RESTORE OLD CONTEXT MENU
 REG ADD "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve
 #DISABLE WIDGETS
@@ -15,16 +13,15 @@ REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v HideRecommendedSe
 #DISABLE SEARCH INDEXING
 sudo sc config "wsearch" start=disabled
 
-
-
-
-#REMOVE POSSIBLY USEFUL STUFF:
-
 #DISABLE "EFFICIENCY MODE"
+## There were still reports of effeciency mode turning on.  Edit shortcuts to have this flag:
+## "C:\Program Files\ArcGIS\Pro\bin\ArcGISPro.exe" --disable-features=UseEcoQoSForBackgroundProcess
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\Power" /v EfficiencyModeDisabled /t REG_DWORD /d 1 /f
 REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00" /v Attributes /t REG_DWORD /d 2 /f
 REG ADD "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling"
 REG ADD "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerAttributes" /v PowerThrottling /t REG_DWORD /d 1 /f
+
+
 
 #BLOCK GAME BAR
 Get-AppxPackage Microsoft.XboxGamingOverlay | Remove-AppxPackage
