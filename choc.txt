@@ -60,6 +60,9 @@ REG ADD HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /f /v TargetRelea
 REG ADD HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /f /v TargetReleaseVersionInfo /t REG_SZ /d 23H2
 REG ADD HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /f /v ProductVersion /t REG_SZ /d "Windows 11"
 
+#FIX FREEZE BUGS
+# GO TO SETTINGS >> SYSTEM >> DISPLAY >> GRAPHICS >> ADVANCED GRAPHICS SETTINGS >> DISABLE "Hardware-accelerated graphics settings"
+
 #FIX LICENSE BUGS
 irm https://get.activated.win | iex
 
