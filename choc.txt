@@ -1,6 +1,8 @@
-#INSTALL CHOCOLATEY, MY FAVORITE BRICK
+#CHOC.TXT
 #  AUTHOR'S NOTE:
 # PLEASE DO NOT EFFING JUST PASTE THIS INTO YOUR ADMIN POWERSHELL.  ONLY PASTE WHAT YOU REALLY WANT OR NEED... K THX!
+
+#INSTALL CHOCOLATEY, MY FAVORITE BRICK
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
 #DISABLE RECALL
@@ -26,8 +28,6 @@ REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\Power" /v EfficiencyModeDisabl
 REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00" /v Attributes /t REG_DWORD /d 2 /f
 REG ADD "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling"
 REG ADD "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerAttributes" /v PowerThrottling /t REG_DWORD /d 1 /f
-
-
 
 #BLOCK GAME BAR
 Get-AppxPackage Microsoft.XboxGamingOverlay | Remove-AppxPackage
@@ -68,6 +68,9 @@ REG ADD "HKLM\System\CurrentControlSet\Control\Power" /v PlatformAoAcOverride /t
 REG ADD HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /f /v TargetReleaseVersion /t REG_DWORD /d 1
 REG ADD HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /f /v TargetReleaseVersionInfo /t REG_SZ /d 23H2
 REG ADD HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /f /v ProductVersion /t REG_SZ /d "Windows 11"
+
+#MAKE WINDOWS USE UTC TIME
+REG ADD HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1 /f
 
 #FIX FREEZE BUGS
 # GO TO SETTINGS >> SYSTEM >> DISPLAY >> GRAPHICS >> ADVANCED GRAPHICS SETTINGS >> DISABLE "Hardware-accelerated graphics settings"
