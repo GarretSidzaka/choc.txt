@@ -1,3 +1,25 @@
+# (         )      )           (              (                
+# )\ )   ( /(   ( /(   *   )   )\ )    (      )\ )  *   )      
+#(()/(   )\())  )\())` )  /(  (()/(    )\    (()/(` )  /( (    
+# /(_)) ((_)\  ((_)\  ( )(_))  /(_))((((_)(   /(_))( )(_)))\   
+#(_))_    ((_)  _((_)(_(_())  (_))   )\ _ )\ (_)) (_(_())((_)  
+# |   \  / _ \ | \| ||_   _|  | _ \  (_)_\(_)/ __||_   _|| __| 
+# | |) || (_) || .` |  | |    |  _/   / _ \  \__ \  | |  | _|  
+# |___/  \__(/ |_|\_|  |_|  ) |_| )  /_/ \_\ |___/  |_|  |___| 
+# (  (      )\ )  *   )  ( /(  ( /(           *   )            
+# )\))(   '(()/(` )  /(  )\()) )\())     (  ` )  /(            
+#((_)()\ )  /(_))( )(_))((_)\ ((_)\      )\  ( )(_))           
+#_(())\_)()(_)) (_(_())  _((_)  ((_)  _ ((_)(_(_())            
+#\ \((_)/ /|_ _||_   _| | || | / _ \ | | | ||_   _|            
+# \ \/\/ /  | |   | |   | __ || (_) || |_| |  | |              
+# (\_/\_/  |___|  |(|   |(||_| \__)/  \___/   |_|              
+# )\ )       (     )\ )  )\ )  ( /(  (                         
+#(()/( (     )\   (()/( (()/(  )\()) )\ )                      
+# /(_)))\ ((((_)(  /(_)) /(_))((_)\ (()/(                      
+#(_)) ((_) )\ _ )\(_))_ (_))   _((_) /(_))_                    
+#| _ \| __|(_)_\(_)|   \|_ _| | \| |(_)) __|                   
+#|   /| _|  / _ \  | |) || |  | .` |  | (_ |                   
+#|_|_\|___|/_/ \_\ |___/|___| |_|\_|   \___|   art:patorjk.com                  
 #CHOC.TXT
 #  AUTHOR'S NOTE:
 # PLEASE DO NOT EFFING JUST PASTE THIS INTO YOUR ADMIN POWERSHELL.  ONLY PASTE WHAT YOU REALLY WANT OR NEED... K THX!
@@ -50,6 +72,13 @@ REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Updates"
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Updates" /v ForceUpdateFromMU /t REG_DWORD /d 1 /f
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet"
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" /v DisableBlockAtFirstSeen /t REG_DWORD /d 1 /f
+#THANKS TO schneegans.de for the ones ending in semicolon
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SmartScreenEnabled /t REG_SZ /d "Off" /f;
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components" /v ServiceEnabled /t REG_DWORD /d 0 /f;
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components" /v NotifyMalicious /t REG_DWORD /d 0 /f;
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components" /v NotifyPasswordReuse /t REG_DWORD /d 0 /f;
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components" /v NotifyUnsafeApp /t REG_DWORD /d 0 /f;
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Systray" /v HideSystray /t REG_DWORD /d 1 /f;
 
 #REMOVE COPILOT
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot"
@@ -78,6 +107,23 @@ REG ADD HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation 
 #FIX LICENSE BUGS
 https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/refs/heads/master/MAS/All-In-One-Version-KL/MAS_AIO.cmd
 
-#ENABLE LOCATION SERVICES IF YOU LIKE WANT TO ORDER TAKE-OUT
+#!!PRIVACY WARNING!!RE-ENABLE LOCATION SERVICES IF YOU LIKE WANT TO ORDER TAKE-OUT
 dism /online /enable-feature /featurename:LocationServices /all /norestart
 
+#MORE TWEAKS
+REG ADD "hku\defaultuser\software\policies\microsoft\windows\explorer" /v disablesearchboxsuggestions /t reg_dword /d 1 /f;
+REG ADD "hku\defaultuser\software\microsoft\windows\currentversion\explorer\advanced\taskbardevelopersettings" /v taskbarendtask /t reg_dword /d 1 /f;
+REG ADD "HKU\DefaultUser\Control Panel\Accessibility\StickyKeys" /v Flags /t REG_SZ /d 10 /f;
+fsutil.exe behavior set disableLastAccess 1
+
+#ALLOW TIMELESS PASSWORDS
+net.exe accounts /maxpwage:UNLIMITED
+
+#SAVE A BUNCH OF HARD DRIVE SPACE
+powercfg.exe /HIBERNATE Off
+
+#HUGELY INCREASE PERFORMANCE AND ENABLE VM'S BUT ALLOW CRAP LIKE MEMORY EXECUTION BUGS IE. ROWHAMMER
+REG ADD "HKLM\System\CurrentControlSet\Control\DeviceGuard" /v "EnableVirtualizationBasedSecurity" /t REG_DWORD /d 0 /f;
+REG ADD "HKLM\System\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "Enabled" /t REG_DWORD /d 0 /f;
+REG ADD "HKLM\System\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "EnabledBootId" /t REG_DWORD /d 0 /f;
+REG ADD "HKLM\System\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "WasEnabledBy" /t REG_DWORD /d 0 /f;
