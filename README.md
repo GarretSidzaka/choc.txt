@@ -12,3 +12,5 @@ https://github.com/ntdevlabs/tiny11builder
 THEN BURN IT AMAZINGLY TO USB
 https://rufus.ie
 
+AFTERWARDS
+SMASH A WINDOWS WITH A CHOCOLATEY BRICK
