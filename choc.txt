@@ -115,9 +115,14 @@ irm https://get.activated.win | iex
 dism /online /enable-feature /featurename:LocationServices /all /norestart
 
 #MORE TWEAKS
-REG ADD "hku\defaultuser\software\policies\microsoft\windows\explorer" /v disablesearchboxsuggestions /t reg_dword /d 1 /f;
-REG ADD "hku\defaultuser\software\microsoft\windows\currentversion\explorer\advanced\taskbardevelopersettings" /v taskbarendtask /t reg_dword /d 1 /f;
-REG ADD "HKU\DefaultUser\Control Panel\Accessibility\StickyKeys" /v Flags /t REG_SZ /d 10 /f;
+REG ADD "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows" /V DisableSearchBoxSuggestions /T REG_DWORD /d 1 /f
+REG ADD "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings"  /v taskbarendtask /t reg_dword /d 1 /f
+
+#DISABLE STICKY KEYS
+reg add "HKCU\Control Panel\Accessibility\StickyKeys" /v Flags /t REG_SZ /d 506 /f
+reg add "HKCU\Control Panel\Accessibility\StickyKeys" /v KeyboardPreference /t REG_SZ /d On /f
+
+#SPEED UP FILE SYSTEM
 fsutil.exe behavior set disableLastAccess 1
 
 #ALLOW TIMELESS PASSWORDS
