@@ -22,7 +22,7 @@
 #|_|_\|___|/_/ \_\ |___/|___| |_|\_|   \___|   art:patorjk.com                  
 #CHOC.TXT
 #  AUTHOR'S NOTE:
-# PLEASE DO NOT EFFING JUST PASTE THIS INTO YOUR ADMIN POWERSHELL.  ONLY PASTE WHAT YOU REALLY WANT OR NEED... K THX!
+# PLEASE DO NOT EFFING JUST PASTE THIS INTO YOUR ADMIN POWERSHELL WITH0UT FIRST READING IT.   K THX!
 
 #INSTALL CHOCOLATEY, MY FAVORITE BRICK
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
