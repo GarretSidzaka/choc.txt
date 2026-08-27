@@ -27,6 +27,9 @@
 #INSTALL CHOCOLATEY, MY FAVORITE BRICK
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
+#WHAT KIND OF MOTHERBOARD DO YOU HAVE INCASE YOU NEED A DRIVER?
+Get-CimInstance -Class Win32_BaseBoard | Format-Table Manufacturer, Product, SerialNumber, Version -Auto
+
 #BLOCK 24H2, THIS IS POINTLESS ON NEWER BUILDS THAN 22621 OR 22H2, ETC
 REG ADD HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /f /v TargetReleaseVersion /t REG_DWORD /d 1
 REG ADD HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /f /v TargetReleaseVersionInfo /t REG_SZ /d 23H2
